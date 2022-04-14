@@ -51,8 +51,8 @@ try {
   $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
   $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     
-  $id = $_GET['id'];
-  $consultaSQL = "SELECT * FROM alumnos WHERE id =" . $id;
+  $id = $_GET['cced'];
+  $consultaSQL = "SELECT * FROM alumnos WHERE cced =" . $id;
 
   $sentencia = $conexion->prepare($consultaSQL);
   $sentencia->execute();
@@ -127,7 +127,7 @@ if (isset($alumno) && $alumno) {
           </div>
           <div class="form-group">
             <label for="cced">Cédula</label>
-            <input type="text" name="cced" id="cced" value="<?= escapar($alumno['cced']) ?>" class="form-control">
+            <input type="number" name="cced" id="cced" value="<?= escapar($alumno['cced']) ?>" class="form-control">
           </div>
           <div class="form-group">
             <label for="praca">Programa Académico</label>

@@ -10,7 +10,7 @@ if (isset($_POST['submit']) && !hash_equals($_SESSION['csrf'], $_POST['csrf'])) 
 if (isset($_POST['submit'])) {
   $resultado = [
     'error' => false,
-    'mensaje' => 'El alumno ' . escapar($_POST['nombre']) . ' ha sido agregado con éxito'
+    'mensaje' => 'El alumno ' . escapar($_POST['nombre']) . ' con id '. escapar($_POST['cced']) .' ha sido agregado con éxito'
   ];
 
   $config = include 'config.php';
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
   } catch(PDOException $error) {
     $resultado['error'] = true;
-    $resultado['mensaje'] = $error->getMessage();
+    $resultado['mensaje'] = 'La id '. escapar($_POST['cced']) .' ya existe';
   }
 }
 ?>
@@ -78,7 +78,7 @@ if (isset($resultado)) {
         </div>
         <div class="form-group">
           <label for="cced">Cédula</label>
-          <input type="text" name="cced" id="cced" class="form-control">
+          <input type="number" name="cced" id="cced" class="form-control">
         </div>
         <div class="form-group">
             <label for="praca">Programa Académico</label>

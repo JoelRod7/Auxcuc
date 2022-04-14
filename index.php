@@ -79,8 +79,8 @@ if ($error) {
                 <td><?php echo escapar($fila["email"]); ?></td>
                 <td><?php echo escapar($fila["praca"]); ?></td>
                 <td>
-                  <a href="<?= 'borrar.php?id=' . escapar($fila["id"]) ?>">🗑️Borrar</a>
-                  <a href="<?= 'editar.php?id=' . escapar($fila["id"]) ?>">✏️Editar</a>
+                  <a href="<?= 'borrar.php?cced=' . escapar($fila["cced"]) ?>">🗑️Borrar</a>
+                  <a href="<?= 'editar.php?cced=' . escapar($fila["cced"]) ?>">✏️Editar</a>
                 </td>
               </tr>
               <?php
@@ -103,8 +103,9 @@ if ($error) {
       <hr>
     </div>
   </div>
+  <a href="tpro.php"  class="btn btn-primary mt-4">Tabla Profesores</a>
 </div>
-
+  
 </div>
 
 <?php include "templates/footer.php"; ?>

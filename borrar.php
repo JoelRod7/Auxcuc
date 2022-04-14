@@ -12,8 +12,8 @@ try {
   $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
   $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     
-  $id = $_GET['id'];
-  $consultaSQL = "DELETE FROM alumnos WHERE id =" . $id;
+  $id = $_GET['cced'];
+  $consultaSQL = "DELETE FROM alumnos WHERE cced =" . $id;
 
   $sentencia = $conexion->prepare($consultaSQL);
   $sentencia->execute();

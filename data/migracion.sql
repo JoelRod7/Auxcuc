@@ -3,11 +3,10 @@ CREATE DATABASE tutorial_crud;
 use tutorial_crud;
 
 CREATE TABLE alumnos (
-  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(30) NOT NULL,
   apellido VARCHAR(30) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  cced INT(3) NOT NULL,
+  cced INT(3) NOT NULL PRIMARY KEY,
   praca VARCHAR(30) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -24,15 +23,25 @@ CREATE TABLE asignatura (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE clases (
+/*CREATE TABLE clases (
   id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   idalumno INT(15) NOT NULL,
   idprofes INT(10) NOT NULL,
 
   FOREIGN KEY (idalumnno) REFERENCES alumnos(idalumnno)
   FOREIGN KEY (idprofes) REFERENCES asignaturas(idprofes)
-  /*CONSTRAINT fk_alumnos FOREIGN KEY (idalumno) REFERENCES alumnos (id),
-  CONSTRAINT fk_asignatura FOREIGN KEY (idprofes) REFERENCES asignatura (idprofe),*/
+  CONSTRAINT fk_alumnos FOREIGN KEY (idalumno) REFERENCES alumnos (id),
+  CONSTRAINT fk_asignatura FOREIGN KEY (idprofes) REFERENCES asignatura (idprofe),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);*/
+
+CREATE TABLE profesores (
+  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(30) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  telefono VARCHAR(30) NOT NULL,
+  
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -14,3 +14,7 @@ $res = curl_exec($ch);
 echo $res;
 curl_close($ch);
 ?>
+<?php include 'templates/header.php'; ?>
+
+
+<?php include 'templates/footer.php'; ?>
