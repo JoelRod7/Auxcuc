@@ -11,9 +11,49 @@ curl_setopt($ch, CURLOPT_URL, "http://consultas.cuc.edu.co/api/v1.0/profesores")
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $res = curl_exec($ch);
 
+echo gettype($res);
 echo $res;
 curl_close($ch);
 ?>
+<?php 
+$sql = array();
+$data = array();
+
+    $resultado = [
+      'error' => false,
+      //'mensaje' => 'El alumno ' . escapar($_POST['nombre']) . ' con id '. escapar($_POST['cced']) .' ha sido agregado con éxito'
+    ];
+  
+    $config = include 'config.php';
+    $api_pro = json_decode($res, true);
+    try {
+      $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
+      $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+    
+      foreach( $api_pro as $row ) {
+        $data [] = [
+            "id" => $row['id'],
+            "nombre" => $row['nombre'],
+            "email" => $row['correo'],
+            "telefono" => $row['telefono'],
+        ]; 
+    }
+    
+      $consultaSQL = "INSERT INTO profesores (id, nombre, email, telefono) VALUES (:id, :nombre, :email, :telefono)";
+
+
+      $sentencia = $conexion->prepare($consultaSQL);
+      //$sentencia->execute($sql);
+      foreach ($data as $row){
+        $sentencia->execute($row);
+      }
+      
+    } catch(PDOException $error) {
+      $resultado['error'] = true;
+      $resultado['mensaje'] = $error->getMessage();
+    }
+  ?>
+
 <?php include 'templates/header.php'; ?>
 
 
