@@ -1,7 +1,7 @@
-/*DROP DATABASE tutorial_crud;*/
-CREATE DATABASE tutorial_crud;
+/*DROP DATABASE t_crud;*/
+CREATE DATABASE t_crud;
 
-use tutorial_crud;
+use t_crud;
 
 CREATE TABLE alumnos (
   nombre VARCHAR(30) NOT NULL,

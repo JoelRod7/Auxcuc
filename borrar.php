@@ -18,7 +18,7 @@ try {
   $sentencia = $conexion->prepare($consultaSQL);
   $sentencia->execute();
 
-  header('Location: http://localhost/tutorial-crud/index.php');
+  header('Location: http://localhost/t-crud/index.php');
 
 } catch(PDOException $error) {
   $resultado['error'] = true;
