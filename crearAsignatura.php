@@ -34,7 +34,8 @@ if (isset($_POST['submit'])) {
 
   } catch(PDOException $error) {
     $resultado['error'] = true;
-    $resultado['mensaje'] = $error->getMessage();
+    //$resultado['mensaje'] = $error->getMessage();
+    $resultado['mensaje'] = 'ASIGNATURA NO CREADA, VERIFICAR CAMPOS';
   }
 }
 ?>
@@ -77,7 +78,7 @@ if (isset($resultado)) {
           </div>
         <div class="form-group">
             <label for="idprofe">Id Profesor</label>
-            <input type="text" name="idprofe" id="idprofe" class="form-control">
+            <input type="number" name="idprofe" id="idprofe" class="form-control">
           </div>
         <div class="form-group">
           <input name="csrf" type="hidden" value="<?php echo escapar($_SESSION['csrf']); ?>">

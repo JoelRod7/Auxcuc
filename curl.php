@@ -11,7 +11,6 @@ curl_setopt($ch, CURLOPT_URL, "http://consultas.cuc.edu.co/api/v1.0/profesores")
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $res = curl_exec($ch);
 
-echo gettype($res);
 echo $res;
 curl_close($ch);
 ?>

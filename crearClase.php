@@ -18,13 +18,13 @@ if (isset($_POST['submit'])) {
   try {
     $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-
-    $alumno = [
+    
+    $clases = [
       "idalumno"   => $_POST['idalumno'],
-      "idprofes" => $_POST['idprofes'],
+      "idasigna" => $_POST['idasigna'],
     ];
 
-    $consultaSQL = "INSERT INTO clases (idalumno, idprofes)";
+    $consultaSQL = "INSERT INTO clases (idalumno, idasigna)";
     $consultaSQL .= "values (:" . implode(", :", array_keys($clases)) . ")";
 
     $sentencia = $conexion->prepare($consultaSQL);
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 
   } catch(PDOException $error) {
     $resultado['error'] = true;
-    $resultado['mensaje'] = $error->getMessage();
+    $resultado['mensaje'] = 'EL ALUMNO O ASIGNATURA NO EXISTE';
   }
 }
 ?>
@@ -63,11 +63,11 @@ if (isset($resultado)) {
       <form method="post">
         <div class="form-group">
           <label for="idalumno">Id Estudiante</label>
-          <input type="text" name="idalumno" id="idalumno" class="form-control">
+          <input type="number" name="idalumno" id="idalumno" class="form-control">
         </div>
         <div class="form-group">
-          <label for="idprofes">Id Profesor</label>
-          <input type="text" name="idprofes" id="idprofes" class="form-control">
+          <label for="idasigna">Id Asignatura</label>
+          <input type="number" name="idasigna" id="idasigna" class="form-control">
         </div>
         <div class="form-group">
           <input name="csrf" type="hidden" value="<?php echo escapar($_SESSION['csrf']); ?>">

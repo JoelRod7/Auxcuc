@@ -24,6 +24,24 @@ try {
   $resultado['error'] = true;
   $resultado['mensaje'] = $error->getMessage();
 }
+
+try {
+  $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
+  $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+    
+  $id = $_GET['id'];
+  $consultaSQL = "DELETE FROM asignatura WHERE id =" . $id;
+
+  $sentencia = $conexion->prepare($consultaSQL);
+  $sentencia->execute();
+
+  header('Location: http://localhost/t-crud/index.php');
+
+} catch(PDOException $error) {
+  $resultado['error'] = true;
+  $resultado['mensaje'] = $error->getMessage();
+}
+
 ?>
 
 <?php require "templates/header.php"; ?>

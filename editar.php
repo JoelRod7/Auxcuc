@@ -13,7 +13,7 @@ $resultado = [
   'mensaje' => ''
 ];
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['cced'])) {
   $resultado['error'] = true;
   $resultado['mensaje'] = 'El alumno no existe';
 }
