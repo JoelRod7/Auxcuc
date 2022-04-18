@@ -55,6 +55,16 @@ if ($error) {
 
 <div class="container">
   
+<div class="row">
+    <div class="col-md-12">
+      <a href="crear.php"  class="btn btn-primary mt-4">Crear Alumno</a>
+      <a href="crearAsignatura.php"  class="btn btn-primary mt-4">Crear Asignatura</a>
+      <a href="crearClase.php"  class="btn btn-primary mt-4">Crear Clase</a>
+      <a href="tpro.php"  class="btn btn-primary mt-4">Tabla Profesores</a>
+    </div>
+    </div>
+
+
   <div class="row">
     <div class="col-md-12">
       <h2 class="mt-3"><?= $titulo ?></h2>
@@ -97,12 +107,7 @@ if ($error) {
 
 
   <div class="container">
-    <div class="row">
-    <div class="col-md-12">
-      <a href="crear.php"  class="btn btn-primary mt-4">Crear Alumno</a>
-      <hr>
-    </div>
-  </div>
+    <hr>
   <?php
 
   try {
@@ -152,7 +157,7 @@ if ($error) {
                 <td><?php echo escapar($fila["idprofe"]); ?></td>
                 <td>
                   <a href="<?= 'borrar.php?id=' . escapar($fila["id"]) ?>">🗑️Borrar</a>
-                  <a href="<?= 'editar.php?id=' . escapar($fila["id"]) ?>">✏️Editar</a>
+                  <a href="<?= 'editar2.php?nombre=' . escapar($fila["nombre"]) ?>">✏️Editar</a>
                 </td>
               </tr>
               <?php
@@ -161,8 +166,6 @@ if ($error) {
           ?>
         <tbody>
       </table>
-      <a href="crearAsignatura.php"  class="btn btn-primary mt-4">Crear Asignatura</a>
-      <a href="tpro.php"  class="btn btn-primary mt-4">Tabla Profesores</a>
       <hr>
     </div>
     <?php
@@ -212,7 +215,6 @@ if ($error) {
           ?>
         <tbody>
       </table>
-          <a href="crearClase.php"  class="btn btn-primary mt-4">Crear Clase</a>
           <hr>
     </div>
   </div>
